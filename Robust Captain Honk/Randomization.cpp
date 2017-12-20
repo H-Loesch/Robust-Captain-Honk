@@ -1,6 +1,14 @@
 #include "stdafx.h"
-#include "overarch.h"
+#include "Randomization.h"
+#include <string>
 
+int get_random(int min, int max)
+{
+	int range = max - min + 1;
+	return (rand() % range) + min;
+}
+
+//returns a randomized enemy name
 std::string enemy_name()
 {
 	//since name/type of monster has LITERALLY no effect on anything else, don't need to link this with anything

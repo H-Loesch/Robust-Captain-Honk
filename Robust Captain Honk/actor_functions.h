@@ -1,4 +1,5 @@
-#pragma once
+
+//I don't think this is actually necessary since actor.cpp contains everything here.
 /*
 void print_actor(Actor involved);
 
