@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Randomization.h"
 #include <string>
+#include <sstream>
 
 Actor::Actor() {
 	health = 45;
@@ -29,7 +30,7 @@ int Actor::get_magic() {
 	return magic;
 }
 
-std::string Actor::getName() {
+std::string Actor::get_name() {
 	return name;
 }
 
@@ -37,23 +38,31 @@ std::string Actor::getName() {
 
 void Actor::heal() {
 	//increase health by amount equal to random number within healLow-healHigh, decrease magic by amount
-	mod_health(get_random(healLow, healHigh));
-	mod_magic(-get_random(healCostLow, healCostHigh));
+	int healAmount = get_random(healLow, healHigh);
+	int healCost = get_random(healCostLow, healCostHigh);
+	mod_health(healAmount);
+	mod_magic(healCost);
+	outputStatement << name << " heals for " << healAmount << " damage, using " << healCost << " magic!" << std::endl;
 }
 
-void Actor::attack(Actor* enemy) {
+void Actor::attack(Actor& enemy) {
 	//decrease enemy health by amount within the attacker's damageLow-damageHigh range
-	enemy->mod_health(-get_random(damageLow, damageHigh));
+	int damage = -get_random(damageLow, damageHigh);
+	enemy.mod_health(damage);
+	outputStatement << name << " attacks " << enemy.get_name() << " for " << damage << " damage!" << std::endl;
 }
 
 void Actor::recharge() {
-	mod_magic(get_random(rechargeLow, rechargeHigh));
+	int magicGain = get_random(rechargeLow, rechargeHigh);
+	mod_magic(magicGain);
+	outputStatement << name << " recharges for " << magicGain << " magic!" << std::endl;
 }
 
-void Actor::steal(Actor* enemy) {
+void Actor::steal(Actor& enemy) {
 	int change = get_random(stealLow, stealHigh);
 	mod_magic(change);
-	enemy->mod_magic(-change);
+	enemy.mod_magic(-change);
+	outputStatement << name << " steals " << change << " magic from " << enemy.get_name() << std::endl;
 }
 
 //internal functions
@@ -74,6 +83,8 @@ void Actor::mod_magic(int change) {
 	magic += change;
 }
 
-std::string Actor::getOut() {
-	return outputStatement;
+std::string Actor::get_out() {
+	std::string output;
+	outputStatement >> output; //this SHOULD clear the string stream. Test later
+	return output;
 }

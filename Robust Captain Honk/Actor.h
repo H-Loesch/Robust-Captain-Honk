@@ -2,6 +2,7 @@
 #define ACTOR_H
 
 #include <string>
+#include <sstream>
 
 class Actor{
 private: 
@@ -22,7 +23,7 @@ private:
 	int stealLow;
 	int stealHigh;
 
-	std::string outputStatement;
+	std::stringstream outputStatement;
 public:
 
 	//default constructor
@@ -35,18 +36,18 @@ public:
 	Actor(int healthStart, int magicStart);
 
 	//decreases enemy health
-	void attack(Actor* enemy);
+	void attack(Actor& enemy);
 	//increases health, decreases magic
 	void heal();
 	//increases magic
 	void recharge();
 	//increases magic, decreases enemy magic
-	void steal(Actor* enemy);
+	void steal(Actor& enemy);
 
 	int get_health();
 	int get_magic();
-	std::string getName();
-	std::string getOut();
+	std::string get_name();
+	std::string get_out();
 
 	void set_health(int newHealth);
 	//changes health by provided amount
