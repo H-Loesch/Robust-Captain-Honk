@@ -25,7 +25,7 @@ std::string enemy_name()
 	} if (dingus == 3) {
 		part1 = "Lord ";
 	} if (dingus == 4) {
-		part1 = "Robust ";
+		part1 = "Robust "; 
 	} if (dingus == 5) {
 		part1 = "Dangerous ";
 	} if (dingus == 6) {
@@ -65,9 +65,9 @@ std::string random_action()
 	int trash = get_random(1, 5);
 	std::string action;
 	if (trash == 1) {
-		action = "Robust";
-	} if (trash == 2) {
-		action = "Explode";
+		action = "Robust"; //Yes, this makes the possibility of "robust robust noun". That's fine.
+	} if (trash == 2) {	   //Robust is used as both a verb and an adjective here.
+		action = "Explode"; //"Robust": To beat or batter, esp. with a blunt instrument not designed as a weapon
 	} if (trash == 3) {
 		action = "Defeat";
 	} if (trash == 4) {
