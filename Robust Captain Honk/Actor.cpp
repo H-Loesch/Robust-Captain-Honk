@@ -110,13 +110,9 @@ void Actor::mod_magic(int change) {
 }
 
 std::string Actor::get_out() {
-	std::string output;
-	outputStatement >> output; //this SHOULD clear the string stream. Test later
-	return output;
+	return outputStatement.str();
 }
 
 void Actor::set_out(std::string newString) {
-	std::stringstream empty;
-	outputStatement.swap(empty);
-	outputStatement << newString;
+	outputStatement.str(newString);
 }
