@@ -35,6 +35,11 @@ public:
 	//specified constructor, without name
 	Actor(int healthStart, int magicStart);
 
+	//sets default min/max values for player
+	void Actor::become_player();
+	//sets default min/max values for enemy
+	void Actor::become_enemy();
+
 	//decreases enemy health
 	void attack(Actor& enemy);
 	//increases health, decreases magic
@@ -55,6 +60,7 @@ public:
 	void set_magic(int newMagic);
 	//changes magic by provided amount
 	void mod_magic(int change);
+	void set_out(std::string newString);
 };
 #endif
 //TODO: will the various min/max values need getters?

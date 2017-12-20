@@ -19,7 +19,7 @@ Actor::Actor(int healthStart, int magicStart, std::string nameStart) {
 Actor::Actor(int healthStart, int magicStart) {
 	health = healthStart;
 	magic = magicStart;
-	name = enemy_name();
+	name = "Player"; //You?
 }
 
 int Actor::get_health() {
@@ -67,6 +67,32 @@ void Actor::steal(Actor& enemy) {
 
 //internal functions
 
+void Actor::become_player() {
+	damageLow = 2;
+	damageHigh = 6;
+	healLow = 6;
+	healHigh = 8;
+	healCostLow = 1;
+	healCostHigh = 3;
+	rechargeLow = 4;
+	rechargeHigh = 7;
+	stealLow = 1;
+	stealHigh = 1;
+}
+
+void Actor::become_enemy() {
+	damageLow = 3;
+	damageHigh = 6;
+	healLow = 4;
+	healHigh = 4;
+	healCostLow = 4;
+	healCostHigh = 4;
+	rechargeLow = 0;
+	rechargeHigh = 0;
+	stealLow = 2;
+	stealHigh = 3;
+}
+
 void Actor::set_health(int newHealth) {
 	health = newHealth;
 }
@@ -87,4 +113,10 @@ std::string Actor::get_out() {
 	std::string output;
 	outputStatement >> output; //this SHOULD clear the string stream. Test later
 	return output;
+}
+
+void Actor::set_out(std::string newString) {
+	std::stringstream empty;
+	outputStatement.swap(empty);
+	outputStatement << newString;
 }
