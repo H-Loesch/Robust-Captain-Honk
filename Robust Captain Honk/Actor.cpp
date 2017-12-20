@@ -41,14 +41,14 @@ void Actor::heal() {
 	int healAmount = get_random(healLow, healHigh);
 	int healCost = get_random(healCostLow, healCostHigh);
 	mod_health(healAmount);
-	mod_magic(healCost);
-	outputStatement << name << " heals for " << healAmount << " damage, using " << healCost << " magic!" << std::endl;
+	mod_magic(-healCost);
+	outputStatement << name << " uses " << healCost << " magic to heal for " << healAmount << "!" << std::endl;
 }
 
 void Actor::attack(Actor& enemy) {
 	//decrease enemy health by amount within the attacker's damageLow-damageHigh range
-	int damage = -get_random(damageLow, damageHigh);
-	enemy.mod_health(damage);
+	int damage = get_random(damageLow, damageHigh);
+	enemy.mod_health(-damage);
 	outputStatement << name << " attacks " << enemy.get_name() << " for " << damage << " damage!" << std::endl;
 }
 
