@@ -151,6 +151,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="actor_functions.cpp" />
     <ClCompile Include="Randomization.cpp" />
     <ClCompile Include="Robust Captain Honk.cpp" />
