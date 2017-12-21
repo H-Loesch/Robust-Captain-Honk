@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Randomization.h"
 #include <string>
+#include <vector>
 
 int get_random(int min, int max)
 {
@@ -12,94 +13,37 @@ int get_random(int min, int max)
 std::string enemy_name()
 {
 	//since name/type of monster has LITERALLY no effect on anything else, don't need to link this with anything
-	int dingus;
-	dingus = get_random(1, 6);
+	int dingus{ get_random(0,5) };
+	std::vector<std::string> name1Vector{"Robust ", "Space ", "Lord ", "Robust ", "Dangerous ", "Rowdy "};
 	std::string part1;
-	//god I hate if/else's. 
-	//I know there's a better way to do this, with arrays or something, but iunno how to do those yet. 
-	//it's with case statements u dummy
-	if (dingus == 1) {
-		part1 = "Robust ";
-	} if (dingus == 2) {
-		part1 = "Space ";
-	} if (dingus == 3) {
-		part1 = "Lord ";
-	} if (dingus == 4) {
-		part1 = "Robust "; 
-	} if (dingus == 5) {
-		part1 = "Dangerous ";
-	} if (dingus == 6) {
-		part1 = "Rowdy ";
-	}
+	part1 = name1Vector.at(dingus);
 
-	int bingus{ get_random(1,9) };
+	int bingus{ get_random(0,9) };
+	std::vector<std::string> name2Vector{ "Goat", "Mercenary", "Tree Man", "Bear", "Space Bear", "Ghost", "Radiation", "Dingus",
+		"Lord Singuloth", "Cuban Pete" }; //chick chicky boom
 	std::string part2;
-	if (bingus == 1) {
-		part2 = "Goat";
-	} if (bingus == 2) {
-		part2 = "Mercenary";
-	} if (bingus == 3) {
-		part2 = "Tree Man";
-	} if (bingus == 4) {
-		part2 = "Bear";
-	} if (bingus == 5) {
-		part2 = "Ghost";
-	} if (bingus == 6) {
-		part2 = "Radiation";
-	} if (bingus == 7) {
-		part2 = "Dingus";
-	} if (bingus == 8) {
+	part2 = name2Vector.at(bingus);
+	if (bingus >= 9) {
 		part1 = "";
-		part2 = "Lord Singuloth";
-	} if (bingus == 9) {
-		part1 = "";
-		part2 = "Cuban Pete";
 	}
-	std::string name;
-	name = part1 + part2;
+	std::string name{ part1 + " " + part2 };
 	return name;
 }
 
 std::string random_action()
 {
-	int trash = get_random(1, 5);
-	std::string action;
-	if (trash == 1) {
-		action = "Robust"; //Yes, this makes the possibility of "robust robust noun". That's fine.
-	} if (trash == 2) {	   //Robust is used as both a verb and an adjective here.
-		action = "Explode"; //"Robust": To beat or batter, esp. with a blunt instrument not designed as a weapon
-	} if (trash == 3) {
-		action = "Defeat";
-	} if (trash == 4) {
-		action = "Combat";
-	} if (trash == 5) {
-		action = "Debate";
-	}
-	return action;
+	/*"Robust robust noun" is a possibility. That's intentional and fine, as robust is used as a verb and adjective here
+	"Robust": To beat or batter, esp. with a blunt instrument not designed as a weapon*/
+	int trash = get_random(0, 5);
+	std::vector<std::string> actionVector{ "Robust", "Explode", "Defeat", "Combat", "Debate", "Vigorously Debate" };
+	return actionVector.at(trash);
 }
 
 std::string random_prize()
 {
-	int prize = get_random(1, 9);
-	std::string item;
-	if (prize == 1) {
-		item = "Cool Rock";
-	} if (prize == 2) {
-		item = "Gumball";
-	} if (prize == 3) {
-		item = "Teddy Bear";
-	} if (prize == 4) {
-		item = "Physics Textbook";
-	} if (prize == 5) {
-		item = "Fountain Pen (no ink)";
-	} if (prize == 6) {
-		item = "Spool of White Thread";
-	} if (prize == 7) {
-		item = "Headphones (broken)";
-	} if (prize == 8) {
-		item = "Faith";
-	} if (prize == 9) {
-		item = "3 Cubic Inches of Meat!";
-	}
-	return item;
+	int prize = get_random(0, 10);
+	std::vector<std::string> itemVector{ "Cool Rock", "Gumball", "Teddy Bear", "Space Teddy Bear", "Teddy Space Bear", "Physics Textbook",
+		"Fountain Pen (no ink)", "Spool of White Thread", "Headphones (broken)", "Faith", "3 Cubic Inches of Meat!" };
+	//the concept of receiving 3 cubic inches of meat as a prize, to this day, both haunts and amuses me.
+	return itemVector.at(prize);
 }
