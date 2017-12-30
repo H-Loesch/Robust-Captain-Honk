@@ -13,8 +13,8 @@ int get_random(int min, int max)
 std::string enemy_name()
 {
 	//since name/type of monster has LITERALLY no effect on anything else, don't need to link this with anything
-	int dingus{ get_random(0,5) };
-	std::vector<std::string> name1Vector{"Robust ", "Space ", "Lord ", "Robust ", "Dangerous ", "Rowdy "};
+	int dingus{ get_random(0,6) };
+	std::vector<std::string> name1Vector{"Robust ", "Space ", "Lord ", "Robust ", "Dangerous ", "Rowdy ", "Captain "};
 	std::string part1;
 	part1 = name1Vector.at(dingus);
 
@@ -27,6 +27,9 @@ std::string enemy_name()
 		part1 = "";
 	}
 	std::string name{ part1 + " " + part2 };
+	if (bingus >= 9) {
+		name = part2; 
+	}
 	return name;
 }
 
